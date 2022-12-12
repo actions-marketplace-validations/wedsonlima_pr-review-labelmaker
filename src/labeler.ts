@@ -9,7 +9,7 @@ export async function run() {
   try {
     const token = core.getInput(Inputs.RepoToken, { required: true });
     const riviewerCount =
-      getInputAsInt(Inputs.TargetApprovedCount, { required: true }) || 2;
+      getInputAsInt(Inputs.TargetApprovedCount, { required: true });
     const labelToBeAdded = core.getInput(Inputs.LabelToBeAdded, {
       required: true
     });
