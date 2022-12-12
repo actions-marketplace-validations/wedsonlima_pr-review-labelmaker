@@ -8,8 +8,9 @@ type ClientType = ReturnType<typeof github.getOctokit>;
 export async function run() {
   try {
     const token = core.getInput(Inputs.RepoToken, { required: true });
-    const riviewerCount =
-      getInputAsInt(Inputs.TargetApprovedCount, { required: true });
+    const riviewerCount = getInputAsInt(Inputs.TargetApprovedCount, {
+      required: true
+    });
     const labelToBeAdded = core.getInput(Inputs.LabelToBeAdded, {
       required: true
     });
@@ -52,12 +53,16 @@ export async function run() {
       States.APPROVED
     );
 
+    console.log(`approved reviews: ${approvedReviews.length}`);
+
     if (approvedReviews.length >= riviewerCount) {
       await addLabels(client, prNumber, [labelToBeAdded]);
+      console.log(`applying ${labelToBeAdded}`);
 
       if (labelToBeRemoved) {
         if (pullRequest.labels.find(l => l.name === labelToBeRemoved)) {
           await removeLabels(client, prNumber, [labelToBeRemoved]);
+          console.log(`removing ${labelToBeRemoved}`);
         }
       }
     }

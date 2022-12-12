@@ -13,7 +13,7 @@ jobs:
   labeler:
     runs-on: ubuntu-latest
     steps:
-    - uses: jsryudev/pr-review-labeler@v0.1.4
+    - uses: wedsonlima/pr-review-labeler@v0.0.2
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-approved-count: 1
@@ -27,6 +27,6 @@ Various inputs are defined in [`action.yml`](action.yml)
 | Name | Description | Default | Required |
 | - | - | - | - |
 | `repo-token` | Token to use to authorize label changes. Typically the GITHUB_TOKEN secret | N/A | N/A |
-| `target-approved-count` | The target approved review count | 2 | Y |
+| `target-approved-count` | The target approved review count | None | Y |
 | `label-to-be-added` | The GitHub label to be added when `target-approved-count` is reached | None | Y |
 | `label-to-be-removed` | The GitHub label to be removed when `target-approved-count` is reached | None | N |
