@@ -34,7 +34,7 @@ export async function run() {
 
     const head = pullRequest.head.sha;
 
-    console.log(`head commit for pr: ${head}`);
+    console.log(`Head commit for PR: ${head}`);
 
     if (pullRequest.state !== States.Open) {
       console.log('Pull request is not open, exiting');
@@ -108,7 +108,7 @@ async function getReviews(
     filteredReviews.push(...targetReviews);
   }
 
-  console.log(`found ${filteredReviews.length} reviews`);
+  console.log(`found ${filteredReviews.length} ${state} reviews`);
 
   return filteredReviews;
 }
