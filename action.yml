@@ -1,6 +1,5 @@
-name: 'PR Review Labeler'
-description: 'PR Review Labeler'
-author: 'jsryu.dev'
+name: 'PR Review Approved Labeler'
+description: 'PR Review Approved Labeler'
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
