@@ -5,7 +5,7 @@ inputs:
     description: 'The GITHUB_TOKEN secret'
   target-approved-count:
     description: 'The target approved review count'
-    default: 2
+    required: true
   label-to-be-added:
     description: 'The GitHub label to be added when `target-approved-count` is reached' 
     required: true
