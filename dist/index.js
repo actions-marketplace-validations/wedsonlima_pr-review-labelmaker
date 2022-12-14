@@ -50,7 +50,9 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const token = core.getInput(utils_1.Inputs.RepoToken, { required: true });
-            const riviewerCount = utils_1.getInputAsInt(utils_1.Inputs.TargetApprovedCount, { required: true }) || 2;
+            const riviewerCount = utils_1.getInputAsInt(utils_1.Inputs.TargetApprovedCount, {
+                required: true
+            }) || 0;
             const labelToBeAdded = core.getInput(utils_1.Inputs.LabelToBeAdded, {
                 required: true
             });
@@ -69,7 +71,7 @@ function run() {
                 pull_number: prNumber
             });
             const head = pullRequest.head.sha;
-            console.log(`head commit for pr: ${head}`);
+            console.log(`Head commit for PR: ${head}`);
             if (pullRequest.state !== utils_1.States.Open) {
                 console.log('Pull request is not open, exiting');
                 return;
@@ -79,11 +81,14 @@ function run() {
                 return;
             }
             const approvedReviews = yield getReviews(client, prNumber, head, utils_1.States.APPROVED);
+            console.log(`approved reviews: ${approvedReviews.length}`);
             if (approvedReviews.length >= riviewerCount) {
                 yield addLabels(client, prNumber, [labelToBeAdded]);
+                console.log(`applying ${labelToBeAdded}`);
                 if (labelToBeRemoved) {
                     if (pullRequest.labels.find(l => l.name === labelToBeRemoved)) {
                         yield removeLabels(client, prNumber, [labelToBeRemoved]);
+                        console.log(`removing ${labelToBeRemoved}`);
                     }
                 }
             }
@@ -133,7 +138,7 @@ function getReviews(client, prNumber, head, state) {
             }
             finally { if (e_1) throw e_1.error; }
         }
-        console.log(`found ${filteredReviews.length} reviews`);
+        console.log(`found ${filteredReviews.length} ${state} reviews`);
         return filteredReviews;
     });
 }

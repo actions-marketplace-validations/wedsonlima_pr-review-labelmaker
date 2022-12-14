@@ -8,9 +8,10 @@ type ClientType = ReturnType<typeof github.getOctokit>;
 export async function run() {
   try {
     const token = core.getInput(Inputs.RepoToken, { required: true });
-    const riviewerCount = getInputAsInt(Inputs.TargetApprovedCount, {
-      required: true
-    });
+    const riviewerCount =
+      getInputAsInt(Inputs.TargetApprovedCount, {
+        required: true
+      }) || 0;
     const labelToBeAdded = core.getInput(Inputs.LabelToBeAdded, {
       required: true
     });
@@ -103,7 +104,7 @@ async function getReviews(
       })
       .filter(review => {
         console.log(`review.state: ${review.state}`);
-        return review.state === state
+        return review.state === state;
       });
     filteredReviews.push(...targetReviews);
   }

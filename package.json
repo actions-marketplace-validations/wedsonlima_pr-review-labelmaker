@@ -1,8 +1,8 @@
 {
-  "name": "pr-review-labeler",
-  "version": "0.1.4",
+  "name": "pr-review-labelmaker",
+  "version": "0.0.5",
   "private": true,
-  "description": "Pull Request Review Labeler",
+  "description": "Pull Request Review Labelmaker",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc && ncc build lib/main.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsryudev/pr-review-labeler.git"
+    "url": "git+https://github.com/jsryudev/pr-review-labelmaker.git"
   },
   "keywords": [],
   "author": "jsryu.dev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jsryudev/pr-review-labeler/issues"
+    "url": "https://github.com/jsryudev/pr-review-labelmaker/issues"
   },
-  "homepage": "https://github.com/jsryudev/pr-review-labeler#readme",
+  "homepage": "https://github.com/jsryudev/pr-review-labelmaker#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0"
