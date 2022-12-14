@@ -13,7 +13,7 @@ jobs:
   labeler:
     runs-on: ubuntu-latest
     steps:
-    - uses: wedsonlima/pr-review-labeler@v0.0.3
+    - uses: wedsonlima/pr-review-labelmaker@v0.0.4
       with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           target-approved-count: 1
