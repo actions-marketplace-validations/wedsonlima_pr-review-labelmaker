@@ -1,5 +1,5 @@
-name: 'PR Review Approved Labeler'
-description: 'PR Review Approved Labeler'
+name: 'PR Review Labelmaker'
+description: 'PR Review Labelmaker'
 inputs:
   repo-token:
     description: 'The GITHUB_TOKEN secret'
